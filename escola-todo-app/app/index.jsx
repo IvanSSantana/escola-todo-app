@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#84d16f',
     borderTopLeftRadius: 25,
     borderTopRightRadius: 25,
-    paddingHorizontal: '5%'
+    paddingHorizontal: '5%',
   },
   title: {
     fontSize: 30,
@@ -58,7 +58,8 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 16,
-    color: 'grey',
+    color: '#000',
+    textAlign: 'center'
   },
   button: {
     position: 'absolute',

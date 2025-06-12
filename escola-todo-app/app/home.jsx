@@ -17,7 +17,7 @@ export default function Home() {
 
   const getItemsFromDevice = async () => {
     try {
-      const itemsMemory = await AsyncStorage.getItem('FantechTODOApp');
+      const itemsMemory = await AsyncStorage.getItem('escola-todo-app');
       if (itemsMemory != null)
         setItem(JSON.parse(itemsMemory))
     } catch (error) {
@@ -28,7 +28,7 @@ export default function Home() {
   const saveItemsToDevice = async () => {
     try {
       const itemsJson = JSON.stringify(items);
-      await AsyncStorage.setItem('FantechTODOApp', itemsJson);
+      await AsyncStorage.setItem('escola-todo-app', itemsJson);
     } catch (error) {
       console.log(`Erro: ${error}`)
     }
@@ -38,7 +38,7 @@ export default function Home() {
     if (textInput == '') {
       Alert.alert(
         'Ocorreu um problema :(',
-        'Por favor, informe o nome do produto'
+        'Por favor, informe o nome da tarefa'
       );
     } else {
       const newItem = {
@@ -73,7 +73,7 @@ export default function Home() {
 
   const removeItem = itemId => {
     Alert.alert(
-      'Excluir produto?', 'Confirmar a exclusão deste produto?',
+      'Excluir tarefa?', 'Confirmar a exclusão da tarefa?',
       [
         {text: 'sim', onPress: () => {
           const newItems = items.filter(item => item.id != itemId);
@@ -89,7 +89,7 @@ export default function Home() {
 
   const removeAll = () => {
     Alert.alert(
-      'Limpar?', 'Confirmar a exclusão de todos os produtos?',
+      'Limpar?', 'Confirmar a exclusão de todas as tarefas?',
       [
         {
           text: 'Sim',
@@ -106,12 +106,11 @@ export default function Home() {
     <SafeAreaView style={{ flex: 1 }}>
       <ImageBackground
         source={require('../assets/background.jpg')}
-        style={{ flex: 1, justifyContent: 'flex-start' }}
-        resizeMode='repeat'
+        style={{ flex: 1, justifyContent: 'flex-start'}}
       >
         <View style={styles.header}>
-          <Text style={styles.title}>Lista de Produtos</Text>
-          <Ionicons name="trash" size={32} color="#fff" onPress={removeAll}/>
+          <Text style={styles.title}>Lista de Tarefas</Text>
+          <Ionicons name="trash" size={32} color="red" onPress={removeAll}/>
         </View>
 
         <FlatList
@@ -133,7 +132,7 @@ export default function Home() {
               color="#fff"
               fontSize={18}
               placeholderTextColor="#aeaeae"
-              placeholder='Digite o nome do produto...'
+              placeholder='Digite a tarefa...'
               value={textInput}
               onChangeText={(text) => setTextInput(text)}
             />
@@ -155,7 +154,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    backgroundColor: '#000000c0',
+    backgroundColor: 'black',
     borderBottomRightRadius: 30,
     borderBottomLeftRadius: 30
   },
